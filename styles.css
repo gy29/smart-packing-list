@@ -768,7 +768,10 @@ input {
 .check-group-header h3 {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px; /* 增大一点间距，防止重叠 */
+  /* 关键：给伪元素留足空间，避免文字挤压圆点 */
+  padding-left: 52px; 
+  position: relative;
 }
 
 .check-group-header h3::before {
@@ -778,6 +781,12 @@ input {
   border-radius: 50%;
   background: var(--coral);
   box-shadow: 16px 0 0 var(--teal), 32px 0 0 var(--gold);
+  
+  /* 核心修复：绝对定位，脱离文档流，永不重叠 */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
 }
 
 .check-group-header span {
