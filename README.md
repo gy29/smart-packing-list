@@ -43,27 +43,11 @@ Push this directory's contents to a repository root, then enable Pages for the b
 
 ## Advertising Setup
 
-The page has three prepared ad slots:
+This version is optimized for Google AdSense Auto ads. The site keeps only the official AdSense script in `index.html` and does not render fixed sidebar ads or manual in-content ad placeholders.
 
-- `resultInline`: above the generated checklist.
-- `sideRail`: tall sticky sidebar placement on desktop.
-- `sideRailSecond`: secondary sidebar placement.
+In AdSense, enable Auto ads for the published domain. Google can then insert ads around natural page sections such as the route builder, packing preview, and checklist.
 
-After your ad platform approves the website, edit the top of `app.js`:
-
-```js
-const ADSENSE_CONFIG = {
-  enabled: true,
-  publisherId: "1891599821337117",
-  slots: {
-    resultInline: "your-ad-unit-id",
-    sideRail: "your-ad-unit-id",
-    sideRailSecond: "your-ad-unit-id",
-  },
-};
-```
-
-The official Google AdSense script for `ca-pub-1891599821337117` has already been added to `index.html`. Before publishing with verified AdSense inventory, replace each `your-ad-unit-id` value with the ad unit IDs from AdSense. The `ads.txt.example` file also uses your publisher ID; rename it to `ads.txt` and keep it in the site root when AdSense asks you to publish ads.txt.
+The `ads.txt.example` file uses your publisher ID. Rename it to `ads.txt` and keep it in the site root when AdSense asks you to publish ads.txt.
 
 ## Route And Weather API Setup
 

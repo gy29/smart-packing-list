@@ -9,16 +9,6 @@ const API_CONFIG = {
   apiKey: "",
 };
 
-const ADSENSE_CONFIG = {
-  enabled: true,
-  publisherId: "1891599821337117",
-  slots: {
-    resultInline: "",
-    sideRail: "",
-    sideRailSecond: "",
-  },
-};
-
 const LOCATION_DATA = [
   {
     code: "US",
@@ -1645,23 +1635,7 @@ const copy = {
         checked: "Checked bag",
         backpack: "Backpack",
       },
-    },
-    ads: {
-      label: "Advertisement",
-      resultInline: {
-        title: "Ad slot reserved",
-        body: "Place a responsive ad unit here after ad network approval.",
-      },
-      sideRail: {
-        title: "Sidebar ad",
-        body: "A tall desktop placement for travel cards, insurance, or booking ads.",
-      },
-      sideRailSecond: {
-        title: "Second sidebar ad",
-        body: "Use this for another responsive unit or affiliate placement.",
-      },
-    },
-    messages: {
+    },    messages: {
       copied: "Checklist copied.",
       downloaded: "Checklist downloaded.",
       shared: "Share link copied.",
@@ -1902,23 +1876,7 @@ const copy = {
         checked: "托运行李",
         backpack: "背包",
       },
-    },
-    ads: {
-      label: "广告",
-      resultInline: {
-        title: "广告位预留",
-        body: "广告账号通过审核后，可在这里放置响应式广告单元。",
-      },
-      sideRail: {
-        title: "侧边广告",
-        body: "适合旅行卡、保险、订票等高展示位置。",
-      },
-      sideRailSecond: {
-        title: "第二侧边广告",
-        body: "可放另一个响应式广告或联盟推广位。",
-      },
-    },
-    messages: {
+    },    messages: {
       copied: "清单已复制。",
       downloaded: "清单已下载。",
       shared: "分享链接已复制。",
@@ -2044,7 +2002,6 @@ function renderStaticText() {
   $("#pageTitle").textContent = t.pageTitle;
   $("#pageIntro").textContent = t.intro;
   $("#routeHeroImage").alt = t.routeHeroAlt;
-  $("#packingDetailImage").alt = t.packingDetailAlt;
   $("#builderEyebrow").textContent = t.builderEyebrow;
   $("#builderTitle").textContent = t.builderTitle;
   $("#originLegend").textContent = t.originLegend;
@@ -2087,8 +2044,6 @@ function renderStaticText() {
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-
-  renderAdPlaceholders();
 }
 
 function renderFormControls() {
@@ -2716,36 +2671,6 @@ function todayIso() {
 function setMeta(name, content, attribute = "name") {
   const element = document.querySelector(`meta[${attribute}="${name}"]`);
   if (element) element.setAttribute("content", content);
-}
-
-function renderAdPlaceholders() {
-  const t = copy[state.lang];
-  $$(".ad-slot").forEach((slot) => {
-    const slotKey = slot.dataset.adSlotKey;
-    const copyKey = slot.dataset.adCopy || slotKey;
-    slot.setAttribute("aria-label", t.ads.label);
-
-    if (!ADSENSE_CONFIG.enabled || !ADSENSE_CONFIG.publisherId || !ADSENSE_CONFIG.slots[slotKey]) {
-      slot.innerHTML = `
-        <span>${t.ads.label}</span>
-        <strong>${t.ads[copyKey].title}</strong>
-        <p>${t.ads[copyKey].body}</p>
-      `;
-      return;
-    }
-
-    slot.innerHTML = `
-      <ins
-        class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-${ADSENSE_CONFIG.publisherId}"
-        data-ad-slot="${ADSENSE_CONFIG.slots[slotKey]}"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    `;
-    window.adsbygoogle = window.adsbygoogle || [];
-    window.adsbygoogle.push({});
-  });
 }
 
 function buildChecklistText() {
