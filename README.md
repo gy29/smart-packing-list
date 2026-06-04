@@ -54,7 +54,7 @@ After your ad platform approves the website, edit the top of `app.js`:
 ```js
 const ADSENSE_CONFIG = {
   enabled: true,
-  publisherId: "your-publisher-id",
+  publisherId: "1891599821337117",
   slots: {
     resultInline: "your-ad-unit-id",
     sideRail: "your-ad-unit-id",
@@ -63,7 +63,7 @@ const ADSENSE_CONFIG = {
 };
 ```
 
-For Google AdSense, also add the official AdSense script to `index.html`, replace the placeholder publisher ID in `ads.txt.example`, then rename it to `ads.txt` and keep it in the site root. Do not publish the placeholder ID as a live `ads.txt`.
+The official Google AdSense script for `ca-pub-1891599821337117` has already been added to `index.html`. Before publishing with verified AdSense inventory, replace each `your-ad-unit-id` value with the ad unit IDs from AdSense. The `ads.txt.example` file also uses your publisher ID; rename it to `ads.txt` and keep it in the site root when AdSense asks you to publish ads.txt.
 
 ## Route And Weather API Setup
 

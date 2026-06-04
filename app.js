@@ -10,8 +10,8 @@ const API_CONFIG = {
 };
 
 const ADSENSE_CONFIG = {
-  enabled: false,
-  publisherId: "",
+  enabled: true,
+  publisherId: "1891599821337117",
   slots: {
     resultInline: "",
     sideRail: "",
